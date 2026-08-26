@@ -2,8 +2,8 @@
 
 The finite-state source, certificate manifests, persisted matrix powers,
 clean-room verifier, mutation tests, prefix tests, and integrity manifest are
-included in this project repository. The exact local replay commands are in
-`REPRODUCIBILITY.md`. A public data-repository DOI has not been created in
-this workspace; before submission, the authors must either deposit the
-repository at a suitable archive and add its persistent identifier, or use the
-journal’s permitted explanation for why a public deposit is not yet possible.
+publicly available at
+\url{https://github.com/coshaman/cylinder}. The exact replay commands are in
+\texttt{paper/REPRODUCIBILITY.md} in that repository. No DOI is currently
+assigned to the code archive; the author may add an archival identifier later
+if required by the journal.

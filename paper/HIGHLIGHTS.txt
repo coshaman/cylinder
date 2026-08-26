@@ -1,4 +1,5 @@
-- Exact total domination numbers are obtained for cylindrical widths 5--7.
-- A finite-state model converts total domination to weighted closed walks.
-- Min-plus identities certify the three eventual recurrences exactly.
-- Independent replay reproduces all finite certificates and prefixes.
+- Efficient open domination is characterized for every cylindrical grid.
+- A tridiagonal row system yields a universal total-domination lower bound.
+- Exact total domination is obtained for every P_(2k) square C_((2k+1)t).
+- Complete formulas are proved for cylindrical widths five, six, and seven.
+- Independent finite certificates verify the residual fixed-width layer.

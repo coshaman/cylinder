@@ -1,6 +1,6 @@
 # Discrete Applied Mathematics: current submission checklist
 
-Audit date: 2026-08-26. This is a preparation record, not a submission and
+Audit date: 2026-08-27. This is a preparation record, not a submission and
 not a substitute for the live Editorial Manager checklist.
 
 ## Primary publisher sources
@@ -44,3 +44,14 @@ in `AUTHOR_METADATA_TO_CONFIRM.md` and must be completed by the author.
 `COVER_LETTER.md`, `DECLARATION_NOTES.md`, `DATA_CODE_AVAILABILITY.md`, and
 `SUBMISSION_CHECKLIST.md` are drafts only. No journal submission or acceptance
 is claimed.
+
+## 2026-08-27 verification update
+
+The current ScienceDirect record for the journal confirms the scope and
+identifies the live Guide for Authors entry point. The guide page remained
+HTTP-403-restricted to this environment, so template-specific requirements,
+live character limits, and Editorial Manager fields remain author-side checks.
+The Elsevier generative-AI policy page was identified as the governing policy;
+the author must provide the factual disclosure chosen for the actual
+submission. The prepared bundle therefore remains content-ready but
+author-metadata pending.

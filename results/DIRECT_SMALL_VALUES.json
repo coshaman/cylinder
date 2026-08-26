@@ -2,8 +2,8 @@
   "schema": "direct-small-values-v1",
   "witness_serialization": "sorted selected vertices as ASCII lines: row,column\\n",
   "model_hash": "SHA-256 of the LP text emitted by src.direct.milp_probe._write_lp for that (m,n)",
-  "cbc_executable": "C:\\Users\\owner\\AppData\\Roaming\\Python\\Python310\\site-packages\\pulp\\solverdir\\cbc\\win\\i64\\cbc.exe",
-  "cbc_version_output": "Welcome to the CBC MILP Solver \nVersion: 2.10.3 \nBuild Date: Dec 15 2019 \n\ncommand line - C:\\Users\\owner\\AppData\\Roaming\\Python\\Python310\\site-packages\\pulp\\solverdir\\cbc\\win\\i64\\cbc.exe -stop (default strategy 1)\nTotal time (CPU seconds):       0.00   (Wallclock seconds):       0.00\n\n",
+  "cbc_executable": "cbc (bundled solver, version 2.10.3)",
+  "cbc_version_output": "Welcome to the CBC MILP Solver; Version: 2.10.3; Build Date: Dec 15 2019",
   "reproduction_command": "pytest tests/test_direct.py tests/test_small_values.py -q",
   "records": [
     {

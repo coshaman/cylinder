@@ -49,8 +49,9 @@ The three target families are:
 
 ## Target Formulas
 
-These formulas are conjectural targets only. They are not assumptions, and
-they remain conjectural until the required certificates pass.
+The following formulas were frozen targets during the computational phase.
+They are promoted to proved theorems in the final package after the semantic
+proof, certificate replay, and finite-prefix checks.
 
 ### Width 5
 

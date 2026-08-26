@@ -1,4 +1,4 @@
-# Final priority audit (2026-08-26)
+# Final priority audit (2026-08-27)
 
 ## Verdict
 
@@ -216,3 +216,39 @@ Recommended publication wording is therefore:
 No claim that the entire package is wholly novel is supported. Any substantive
 revision of the priority or attribution statements requires a new literature
 review.
+
+## 2026-08-27 update
+
+The current DAM record for Wehrmann--Koster is verified as Discrete Applied
+Mathematics 389 (2026), 106--118, DOI 10.1016/j.dam.2026.03.047. It
+characterizes efficient total k-domination for torus graphs C_m square C_n,
+including the ET1D criterion that both cycle orders are divisible by 4. This
+is relevant neighboring work, not equivalent cylindrical prior art.
+
+The official Springer metadata for Haynes--Hedetniemi--Henning, Domination in
+Graphs: Core Concepts (2023), confirms Chapter 9, Efficient Domination,
+including Section 9.3.3, Total Efficient Cylindrical Graphs (the chapter is
+listed at pp. 259--289 and the cylindrical subsection at p. 275). The
+accessible chapter material was not sufficient for a line-by-line formula
+comparison, so the cylindrical all-width claim remains UNCERTAIN_PRIORITY,
+not affirmative prior art.
+
+The repetitive-graph references were checked against publisher records:
+Klavzar--Zerovnik, Discrete Applied Mathematics 68 (1996), 93--100, DOI
+10.1016/0166-218X(95)00058-Y, and Bouznif--Moncel--Preissmann, Discrete
+Applied Mathematics 208 (2016), 27--40, DOI 10.1016/j.dam.2016.03.009.
+They establish general fasciagraph/rotagraph and min-plus methodology; they
+do not state the present EOD or total-domination formulas.
+
+The normalized principal-claim classifications are:
+
+| Claim | Classification |
+|---|---|
+| Odd EOD family | **PRIOR** |
+| All-width EOD iff theorem | **NOT_FOUND_IN_AUDIT** |
+| Arbitrary-even-width EOD construction | **NOT_FOUND_IN_AUDIT** |
+| Exact even-width total-domination family | **PARTIAL_OVERLAP** |
+| General total-domination lower bound | **UNCERTAIN_PRIORITY** |
+| Width-5/6/7 residual formulas | **NOT_FOUND_IN_AUDIT** |
+| Generic repetitive-graph/min-plus machinery | **PRIOR** |
+| Wehrmann--Koster torus theorem | **PRIOR, DISTINCT DOMAIN** |

@@ -6,8 +6,8 @@ Date: 2026-08-25
 
 - Solver model: direct total-domination MILP, one binary variable per vertex, one open-neighborhood domination constraint per vertex.
 - Solver independence: no automaton imports or automaton state/transition code.
-- CBC executable: `C:\Users\owner\AppData\Roaming\Python\Python310\site-packages\pulp\solverdir\cbc\win\i64\cbc.exe`
-- CBC version command: `C:\Users\owner\AppData\Roaming\Python\Python310\site-packages\pulp\solverdir\cbc\win\i64\cbc.exe -stop`
+- CBC executable: bundled CBC solver (version 2.10.3)
+- CBC version command: `cbc -stop`
 - CBC version output:
 
 ```text
@@ -15,13 +15,13 @@ Welcome to the CBC MILP Solver
 Version: 2.10.3
 Build Date: Dec 15 2019
 
-command line - C:\Users\owner\AppData\Roaming\Python\Python310\site-packages\pulp\solverdir\cbc\win\i64\cbc.exe -stop (default strategy 1)
+command line - cbc -stop (default strategy 1)
 Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
 ```
 
 ## Reproduction
 
-Run from `C:\Users\owner\Documents\ChatGPT\쌀먹\cylindrical_total_domination`:
+Run from the repository root:
 
 ```text
 pytest tests/test_direct.py tests/test_small_values.py -q
