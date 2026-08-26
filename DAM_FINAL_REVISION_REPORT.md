@@ -81,7 +81,7 @@ push. The exact author-side command file is
 release/PUSH_PUBLIC_REPOSITORY.ps1; it checks cleanliness, ancestry, pushes
 without force, and verifies remote equality.
 
-Local final publication commit: 08e0990472418d01959aae89f088ef670b916ace.
+Local final publication commit: 8aa840128be980cf9a29c71b23ecfac2087dbc12.
 
 ## Final scientific readiness
 
