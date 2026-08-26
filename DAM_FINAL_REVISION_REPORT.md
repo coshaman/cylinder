@@ -31,6 +31,14 @@ paper, which concerns C_m square C_n rather than P_m square C_n.
 
 ## Revision loop
 
+Round 1 (baseline generalized review): ACCEPT for the symbolic EOD, lower
+bound, and even-width family; fixed-width certificate review: ACCEPT.
+Round 2 (fresh independent panel): mathematical ACCEPT, certificate ACCEPT,
+literature MINOR_REVISION, and DAM editorial MINOR_REVISION.
+Round 3 (targeted cleanup): literature and editorial findings resolved as
+attribution, provenance, and metadata classifications; no mathematical claim
+was changed. Round 4 was not required.
+
 Fresh independent panel verdicts: mathematical referee ACCEPT; certificate
 referee ACCEPT; literature referee MINOR_REVISION (priority wording only, with
 no equivalent theorem found); and DAM editorial referee MINOR_REVISION
@@ -72,6 +80,8 @@ base 426ace86f9c6c7cd9869fc2bf3fbedef57ec04d1. Codex does not perform the final
 push. The exact author-side command file is
 release/PUSH_PUBLIC_REPOSITORY.ps1; it checks cleanliness, ancestry, pushes
 without force, and verifies remote equality.
+
+Local final publication commit: 08e0990472418d01959aae89f088ef670b916ace.
 
 ## Final scientific readiness
 
