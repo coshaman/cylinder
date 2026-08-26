@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the manuscript and release artifacts."
+title: "Exact Total Domination Numbers of Cylindrical Grids of Widths Five, Six, and Seven"
+type: software
+authors:
+  - name: "박성현"
+date-released: 2026-08-26
+repository-code: "https://github.com/coshaman/cylinder"
+abstract: "Exact total domination formulas for cylindrical grids of widths five, six, and seven, supported by finite-state min-plus certificates."

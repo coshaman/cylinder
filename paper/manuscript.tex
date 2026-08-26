@@ -1,0 +1,479 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,url}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\gt}{\gamma_t}
+\newcommand{\Zinf}{\mathbb{Z}_{\geq0}\cup\{+\infty\}}
+\newcommand{\sq}{\mathbin{\square}}
+\font\hangulfont="Noto Sans KR"
+
+\title{Exact Total Domination Numbers of Cylindrical Grids of Widths Five, Six, and Seven}
+\author{{\hangulfont 박성현}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We determine the total domination number of the cylindrical grids
+\(P_m\sq C_n\) for every circumference \(n\geq3\) when
+\(m\in\{5,6,7\}\). The proof represents a total dominating set by a closed
+walk in a finite column automaton whose states record selected rows and the
+rows still requiring domination from the next column. The graph parameter is
+thereby the minimum diagonal entry of a min-plus matrix power. For widths
+five, six, and seven we verify exact entrywise matrix identities with periods
+four, fourteen, and four, respectively. Exact finite certificates supplied
+with the paper establish these identities and the finite prefix values needed
+to complete the computer-assisted part of the proof. The resulting formulas
+include the exceptional circumferences \(n=12\) for width six and \(n=7,14\)
+for width seven.
+\end{abstract}
+
+\noindent\textbf{Keywords:} total domination; cylindrical grid; Cartesian product;
+finite-state method; min-plus algebra; computer-assisted proof.
+
+\section{Introduction}
+
+Let \(G\) be a graph without isolated vertices. A set \(D\subseteq V(G)\) is
+\emph{totally dominating} if every vertex of \(G\), including every vertex
+of \(D\), has a neighbor in \(D\). The minimum cardinality of such a set is
+the total domination number \(\gt(G)\). In this paper we study the
+cylindrical grids \(P_m\sq C_n\), the Cartesian product of a path and a
+cycle.
+
+Total domination in grid-like products has a substantial literature. Gravier
+studied total domination in products of paths and cycles and related tiling
+formulations \cite{Gravier2002}. Exact cylindrical results for smaller fixed
+path widths were obtained by Eakawinrujee for widths two, three, and four
+\cite{Eakawinrujee2022}; the author's dissertation gives additional
+provenance for that cylinder program \cite{EakawinrujeeThesis2023}.
+Rectangular grids, ordinary domination, and several
+variants provide nearby but distinct problems; for example, the fixed-width
+results of Crevals and Ostergard concern \(P_m\sq P_n\), not cylinders
+\cite{CrevalsOstergard2017}, while Nandi, Parui, and Adhikari study ordinary
+domination \cite{NandiParuiAdhikari2011}.
+
+The results below concern widths not covered by the fixed-width cylindrical
+formulas cited above. Hu, Sohn, and Chen also report exact total-domination
+values for earlier bundle cases, including the small-width overlap and
+$P_5\sq C_n$ \cite{HuSohnChen2016}. We therefore make the narrow claim of
+complete classifications for widths five, six, and seven using one certified
+finite-state proof package, without claiming priority over those earlier
+cases. The cyclic boundary condition couples the first and last columns, and
+a selected vertex cannot dominate itself. Our approach handles both issues
+with a finite-state representation; the semantic reduction is proved in the
+paper and the finite identities are supplied as exact computer-assisted
+certificates.
+
+The methodological distinction from recent nearby work is also important.
+Martínez, Castaño-Fernández, and Puertas use tropical matrix products for
+2-domination of cylinders \cite{MartinezCastanoPuertas2024}; that invariant
+requires two selected neighbors, whereas ordinary total domination requires
+one open neighbor for every vertex, including selected vertices. The shared
+min-plus language is methodological context, not an equivalence of
+parameters.
+
+Our main results are the following.
+
+\begin{theorem}[Width five]\label{thm:w5}
+For every \(n\geq3\),
+\[
+\gt(P_5\sq C_n)=
+\begin{cases}
+\left\lceil 3n/2\right\rceil+1,&n\equiv2\pmod4,\\
+\left\lceil 3n/2\right\rceil,&\text{otherwise}.
+\end{cases}
+\]
+\end{theorem}
+
+\begin{theorem}[Width six]\label{thm:w6}
+Let \(\varepsilon_r\), for \(r\in\{0,\ldots,13\}\), be given by
+\[
+\varepsilon_r=\begin{cases}
+0,&r\in\{0,3,5,7,9,10\},\\
+1,&r\in\{1,4,6,11,13\},\\
+2,&r\in\{2,8\},\\
+3,&r=12.
+\end{cases}
+\]
+Then
+\[
+\gt(P_6\sq C_n)=\left\lceil\frac{12n}{7}\right\rceil
++\varepsilon_{n\bmod14}
+\]
+for every \(n\geq3\), except that \(\gt(P_6\sq C_{12})=22\).
+\end{theorem}
+
+\begin{theorem}[Width seven]\label{thm:w7}
+For every \(n\geq3\),
+\[
+\gt(P_7\sq C_n)=2n,
+\]
+except \(\gt(P_7\sq C_7)=15\) and \(\gt(P_7\sq C_{14})=30\).
+\end{theorem}
+
+The proof has two layers. First, we prove the graph-theoretic equivalence
+between total dominating sets and weighted closed walks. Second, a finite
+certificate establishes the matrix identities and prefix values. The
+thresholded recurrence lemma then shows exactly how those finite facts imply
+each all-circumference formula.
+
+For orientation, the following small-width values are contextual overlap with
+Hu--Sohn--Chen and are not claimed as new here:
+\[
+\begin{array}{c|cc}
+ m & \gt(P_m\sq C_3) & \gt(P_m\sq C_4)\\ \hline
+ 5&5&6\\ 6&6&8\\ 7&6&8
+\end{array}
+\]
+
+\section{Preliminaries}
+
+We use \([m]=\{0,1,\ldots,m-1\}\) for the rows of \(P_m\), and index the
+cycle columns by \(\mathbb{Z}/n\mathbb{Z}\). For \(S\subseteq[m]\), define its
+open path neighborhood by
+\[
+N_P(S)=\{i\in[m]:i-1\in S\text{ or }i+1\in S\},
+\]
+where indices outside \([m]\) are omitted. Thus a row selected in a column
+does not automatically dominate the vertex in that same row and column.
+
+For a set \(D\subseteq V(P_m\sq C_n)\), write
+\[
+S_j=\{i\in[m]:(i,j)\in D\}.
+\]
+The horizontal neighbors of \((i,j)\) are \((i,j-1)\) and \((i,j+1)\),
+and the vertical neighbors are the vertices in rows adjacent to \(i\) in
+the same column.
+
+\section{The finite-state model}
+
+For a cyclic sequence of selected row sets \((S_j)\), define the pending set
+\[
+R_j=[m]\setminus\bigl(S_{j-1}\cup N_P(S_j)\bigr).
+\]
+The rows in \(R_j\) are precisely those for which the left horizontal and
+vertical domination alternatives are absent in column \(j\). Define the fixed
+admissible state set
+\[
+Q_m=\{(S,R):S\subseteq[m],\ R\subseteq[m]\setminus N_P(S),\
+\text{and }R=[m]\setminus(U\cup N_P(S))\text{ for some }U\subseteq[m]\}.
+\]
+Thus the predecessor mask is quantified in the definition but is not part of
+the state. Given a state \(q=(S,R)\in Q_m\) and an input mask
+\(T\subseteq[m]\), the transition is legal precisely when
+\[
+R\subseteq T,
+\]
+and its head pending set is forced to be
+\[
+R'=[m]\setminus\bigl(S\cup N_P(T)\bigr).
+\]
+The edge is \((S,R)\to(T,R')\), where the displayed formula defines \(R'\),
+provided \(R\subseteq T\) and \((T,R')\in Q_m\); its weight is \(|T|\).
+Every edge head is therefore a member of the fixed finite set \(Q_m\).
+
+\begin{theorem}[Finite-state representation]\label{thm:bijection}
+For \(m\in\{5,6,7\}\) and \(n\geq3\), labeled total dominating sets of
+\(P_m\sq C_n\) are in weight-preserving bijection with labeled length-\(n\)
+closed walks in the state graph above. The weight of a walk is the sum of its
+transition weights.
+\end{theorem}
+
+\begin{proof}
+We first prove soundness. Let a cyclic legal walk be given and define
+\(D=\{(i,j):i\in S_j\}\). Consider a vertex \((i,j)\). If
+\(i\notin R_j\), then by the definition of \(R_j\), either
+\(i\in S_{j-1}\) or \(i\in N_P(S_j)\). Hence \((i,j)\) has a selected left
+or vertical open neighbor. If \(i\in R_j\), transition legality gives
+\(i\in S_{j+1}\), so the right horizontal neighbor is selected. These cases
+include selected vertices themselves and therefore establish total
+domination.
+
+Conversely, let \(D\) be a total dominating set and define \(S_j\) from its
+selected vertices and \(R_j\) by the displayed formula. If \(i\in R_j\),
+then the left and every vertical selected-neighbor alternative is absent.
+Total domination forces the right neighbor \((i,j+1)\) to be selected, so
+\(R_j\subseteq S_{j+1}\). The next pending formula follows from its
+definition. The same argument applies to the wraparound transition.
+
+The two constructions are inverse because the pending masks are forced by
+the selected masks. Finally,
+\[
+\sum_j|S_{j+1}|=\sum_j|S_j|=|D|,
+\]
+so weights agree. For \(n=3\), the left and right horizontal neighbors are
+distinct because \(3\nmid2\), so the cyclic encoding has exactly the simple
+graph neighborhood semantics.
+\end{proof}
+
+\section{Min-plus path semantics and the recurrence certificate}
+
+Let \(M_m\) be the weighted adjacency matrix of this graph over \(\Zinf\),
+with \(+\infty\) for a missing edge. Min-plus addition
+and multiplication are
+\[
+a\oplus b=\min(a,b),\qquad a\otimes b=a+b,
+\]
+with \(+\infty\) absorbing for \(\otimes\). Matrix powers use min-plus
+multiplication. The min-plus identity matrix has zero diagonal and
+\(+\infty\) off the diagonal. For \(c\in\mathbb Z_{\geq0}\), scalar matrix
+shift means \((c\otimes A)_{uv}=c+A_{uv}\) for finite \(A_{uv}\), and
+\((c\otimes A)_{uv}=+\infty\) otherwise.
+
+\begin{lemma}[Min-plus path semantics]\label{lem:path}
+For every \(k\geq0\), \((M_m^k)_{uv}\) is the minimum weight of a length-\(k\)
+walk from \(u\) to \(v\), with the minimum of an empty set interpreted as
+\(+\infty\).
+\end{lemma}
+
+\begin{proof}
+The case \(k=0\) is the min-plus identity matrix. For the induction step,
+partition a length-\(k+1\) walk by its penultimate state \(x\). The prefix
+has minimum cost \((M_m^k)_{ux}\), the final edge has cost \((M_m)_{xv}\),
+and minimizing over the finite state set gives the min-plus product. Missing
+prefixes or edges contribute \(+\infty\) and therefore do not create a walk.
+\end{proof}
+
+Define
+\[
+g_m(n)=\min_{q\in Q_m}(M_m^n)_{qq}.
+\]
+Theorem~\ref{thm:bijection} and Lemma~\ref{lem:path} give
+\[
+\gt(P_m\sq C_n)=g_m(n),\qquad n\geq3.
+\]
+
+\begin{lemma}[Thresholded min-plus recurrence]\label{lem:rec}
+Suppose an entrywise identity
+\[
+M^{N+p}=c\otimes M^N
+\]
+holds for a finite integer \(c\). Define
+\(h(t)=\min_q(M^t)_{qq}\). Then for every \(k\geq0\),
+\[
+M^{N+p+k}=c\otimes M^{N+k},
+\]
+and hence \(h(n+p)=h(n)+c\) for every finite-value base \(n\geq N\).
+\end{lemma}
+
+\begin{proof}
+Min-plus matrix multiplication is associative: both parenthesizations
+minimize the same finite collection of triple products. A finite scalar shift
+commutes with a subsequent min-plus product, including entries equal to
+\(+\infty\). Therefore, for \(k\geq0\),
+\[
+M^{N+p+k}=M^{N+p}\otimes M^k
+=(c\otimes M^N)\otimes M^k
+=c\otimes(M^N\otimes M^k)
+=c\otimes M^{N+k}.
+\]
+Taking the minimum over diagonal entries gives the same statement for \(g\).
+When the relevant diagonal minimum is finite, the scalar operation is ordinary
+addition. The conclusion is explicitly restricted to \(n=N+k\geq N\); no
+value below the threshold is propagated by this lemma.
+\end{proof}
+
+\section{Finite certificates and exact formulas}
+
+The finite certificate proposition below is the computational input to the
+three theorem proofs. Its verifier reconstructs the state and transition
+semantics, parses the persisted matrices, recomputes both powers, and checks
+the entrywise identities with explicit \(+\infty\) semantics. The proposition
+is computer-assisted: its trusted inputs are the definitions, the certificate
+files, and the verifier specified in the reproducibility record.
+
+\begin{proposition}[Finite certificate and prefix data]\label{prop:finite}
+For widths five, six, and seven, the state and transition graphs have the
+counts in Table~\ref{tab:cert}; the displayed matrix identities hold; and the
+diagonal minima \(g_m(n)\) agree with the exact finite-prefix tables in the
+project artifact on \(3\le n\le19\), \(3\le n\le34\), and \(3\le n\le31\),
+respectively.
+\end{proposition}
+
+\begin{table}[ht]
+\centering
+\caption{Finite state graphs and entrywise recurrence certificates.}
+\label{tab:cert}
+\begin{tabular}{rrrrrr}
+\toprule
+width & states & transitions & \(N\) & \(p\) & \(c\)\\
+\midrule
+5 & 169 & 2,419 & 16 & 4 & 6\\
+6 & 441 & 11,025 & 21 & 14 & 24\\
+7 & 1,156 & 50,303 & 28 & 4 & 8\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The certified identities are
+\[
+M_5^{20}=6\otimes M_5^{16},\qquad
+M_6^{35}=24\otimes M_6^{21},\qquad
+M_7^{32}=8\otimes M_7^{28}.
+\]
+Consequently the recurrences begin at \(n=16\), \(n=21\), and \(n=28\),
+respectively. The exact finite-prefix replay covers \(3\leq n\leq19\) for
+width five, \(3\leq n\leq34\) for width six, and \(3\leq n\leq31\) for
+width seven. Since each interval ends at \(N+p-1\), every later index
+reduces to a checked base in \([N,N+p-1]\).
+
+The decisive finite values are displayed here. The complete machine-readable
+tables, including all rows from \(3\) through the stated prefix endpoint,
+are part of the reproducibility record.
+
+\begin{table}[ht]
+\centering
+\caption{Width-five prefix values.}\label{tab:w5prefix}
+\begin{tabular}{c|rrrrrrrrrrrrrrrrr}
+\toprule
+\(n\)&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18&19\\
+\midrule
+\(g_5(n)\)&5&6&8&10&11&12&14&16&17&18&20&22&23&24&26&28&29\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Width-six base and exceptional values.}\label{tab:w6prefix}
+\begin{tabular}{c|rrrrrrrrrrrrrrr}
+\toprule
+\(n\)&12&21&22&23&24&25&26&27&28&29&30&31&32&33&34\\
+\midrule
+\(g_6(n)\)&22&36&40&40&42&44&48&48&48&51&54&54&56&57&60\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Width-seven exceptional and tail-base values.}\label{tab:w7prefix}
+\begin{tabular}{c|rrrrrr}
+\toprule
+\(n\)&7&14&28&29&30&31\\
+\midrule
+\(g_7(n)\)&15&30&56&58&60&62\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Width five}
+
+The identity \(M_5^{20}=6\otimes M_5^{16}\) gives
+\(g_5(n+4)=g_5(n)+6\) for \(n\geq16\). \textit{Proof of
+Theorem~\ref{thm:w5}.} The finite proposition gives every value
+\(3\le n\le19\); the base values \(16\le n\le19\) are shown in
+Table~\ref{tab:w5prefix}, and the complete prefix comparison is in the
+machine-readable table. Every \(n\ge20\) reduces by four to one of these
+bases, and the residue \(n\equiv2\pmod4\) contributes the additional unit.
+
+\subsection{Width six}
+
+The identity \(M_6^{35}=24\otimes M_6^{21}\) gives
+\(g_6(n+14)=g_6(n)+24\) only for \(n\geq21\). \textit{Proof of
+Theorem~\ref{thm:w6}.} The value at \(n=12\) is a finite-prefix exception
+and is not propagated to \(n=26\). The finite proposition gives every value
+\(3\le n\le34\), including all rows \(3\le n<21\) and every base value
+\(21\le n\le34\). For every
+\(n\geq35\), repeated subtraction of fourteen reaches one of the checked
+values \(21,\ldots,34\), which proves Theorem~\ref{thm:w6}; the recurrence
+is never applied below its threshold.
+
+\subsection{Width seven}
+
+The identity \(M_7^{32}=8\otimes M_7^{28}\) gives
+\(g_7(n+4)=g_7(n)+8\) only for \(n\geq28\). \textit{Proof of
+Theorem~\ref{thm:w7}.} The finite proposition explicitly covers every row
+\(3\le n\le31\), including the ordinary prefix rows and the exceptions
+\(g_7(7)=15\) and \(g_7(14)=30\). Every \(n\geq32\) reduces to a base in
+\(28,\ldots,31\), proving the theorem. The exceptions remain only in the
+finite prefix and are not propagated by the recurrence.
+
+\section{Verification and reproducibility}
+
+The repository includes a reference implementation and a separately written
+certificate verifier. The verifier rebuilds states, transitions, weights, and
+matrix powers from the definitions. Detailed test counts, mutation results,
+certificate manifests, and hash bindings are recorded separately from the
+mathematical proof.
+The three certificate commands are:
+\begin{verbatim}
+python verify/verify_certificates.py 5 certificates/width5
+python verify/verify_certificates.py 6 certificates/width6
+python verify/verify_certificates.py 7 certificates/width7
+\end{verbatim}
+Each command reports zero identity mismatches. The repository’s SHA256SUMS
+file binds the finite artifacts, and paper/REPRODUCIBILITY.md records the
+expected dimensions, counts, parameters, and verification outputs.
+
+The computations establish the finite proposition; the preceding semantic
+lemmas and theorem arguments establish why that proposition implies the
+infinite statements.
+
+\section{Discussion}
+
+The three widths have different eventual periods: four for widths five and
+seven, and fourteen for width six. This difference is visible in the finite
+state graphs and in the residue correction for width six. The method scales
+naturally as a fixed-width transfer construction, but the finite state space
+grows rapidly with the width. No claim about width eight is made here.
+
+A cyclic domination problem can be expressed as a closed-walk problem without
+sacrificing the open-neighborhood condition. Once the finite weighted graph is
+fixed, an entrywise min-plus identity controls every subsequent walk length at
+and above its threshold; the finite prefix accounts for the transients and
+exceptional circumferences.
+
+\section{Conclusion}
+
+We determined the exact total domination numbers of \(P_5\sq C_n\),
+\(P_6\sq C_n\), and \(P_7\sq C_n\) for every \(n\geq3\). The proof combines a
+weight-preserving finite-state bijection, min-plus path semantics, three exact
+entrywise matrix identities, and finite-prefix verification. The
+computer-assisted portion is specified by the finite proposition and the
+reproducibility record, while the graph-theoretic reduction and recurrence
+argument are given explicitly above.
+
+\begin{thebibliography}{99}
+\bibitem{Gravier2002}
+S. Gravier, Total domination number of grid graphs, Discrete Appl. Math. 121
+(2002) 119--128. \url{https://doi.org/10.1016/S0166-218X(01)00297-9}.
+
+\bibitem{CrevalsOstergard2017}
+S. Crevals, P. R. J. Ostergard, Total domination of grid graphs, J. Combin.
+Math. Combin. Comput. 101 (2017) 175--192.
+
+\bibitem{Eakawinrujee2022}
+P. Eakawinrujee, Total and paired domination numbers of cylinders, Bull.
+Malays. Math. Sci. Soc. 45 (2022) 3321--3334.
+\url{https://doi.org/10.1007/s40840-022-01382-1}.
+
+\bibitem{EakawinrujeeThesis2023}
+P. Eakawinrujee, \emph{Total and paired domination numbers and $\gamma$-total
+and $\gamma$-paired dominating graphs of some graphs}, Ph.D. dissertation,
+Thammasat University, 2023.
+\url{https://ethesisarchive.library.tu.ac.th/thesis/2023/TU_2023_6109320413_17206_27705.pdf}.
+
+\bibitem{HuSohnChen2016}
+F.-T. Hu, M. Y. Sohn, X.-g. Chen, Total and paired domination numbers of
+$C_m$ bundles over a cycle $C_n$, J. Combin. Optim. 32 (2016) 608--625.
+\url{https://doi.org/10.1007/s10878-015-9885-7}.
+
+\bibitem{NandiParuiAdhikari2011}
+M. Nandi, S. Parui, A. Adhikari, The domination numbers of cylindrical grid
+graphs, Appl. Math. Comput. 217 (2011) 4879--4889.
+\url{https://doi.org/10.1016/j.amc.2010.11.019}.
+
+\bibitem{MartinezCastanoPuertas2024}
+J. A. Martínez, A. B. Castaño-Fernández, M. L. Puertas, The 2-domination
+number of cylindrical graphs, arXiv:2409.16703 (2024).
+\url{https://arxiv.org/abs/2409.16703}.
+\end{thebibliography}
+
+\end{document}

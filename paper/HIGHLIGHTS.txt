@@ -1,0 +1,4 @@
+- Exact total domination numbers are obtained for cylindrical widths 5--7.
+- A finite-state model converts total domination to weighted closed walks.
+- Min-plus identities certify the three eventual recurrences exactly.
+- Independent replay reproduces all finite certificates and prefixes.

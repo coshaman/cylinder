@@ -1,0 +1,21 @@
+{
+  "width": 6,
+  "state_count": 441,
+  "transition_count": 11025,
+  "N": 21,
+  "p": 14,
+  "c": 24,
+  "matrix_format": "MTX1 little-endian uint64 dimension, tagged int64 entries",
+  "status": "TOOL_CHECKED_LOCAL",
+  "identity_holds": true,
+  "mismatch_count": 0,
+  "first_mismatch": {"row": 0, "column": 0, "expected": "INF", "actual": "INF"},
+  "manifest_sha256": "03e4db7d0d959775ad99a8e2e548e2a6ee06289bbbc43e80f9e90c31e31cdcda",
+  "M_N_sha256": "e18ae2dc3215162247a7403048b5a97d6c22da2e7d0f861bb61f53efa679b5a0",
+  "M_N_plus_p_sha256": "4a65451135a9db35ede9f0d43d4733164d95df09248610ba3bf2230ecf99d9e8",
+  "runtime_seconds": 0.598761,
+  "peak_rss_bytes": 16592896,
+  "runtime_cap_seconds": 1800,
+  "ram_cap_bytes": 8589934592,
+  "producer_command": "g++ -std=c++17 -O2 src/automaton/power_identity.cpp -o power_identity && power_identity width manifest output_dir"
+}

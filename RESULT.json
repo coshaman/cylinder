@@ -1,0 +1,26 @@
+{
+  "project_status": "ALL_THREE_THEOREMS_PROVED",
+  "width5": {"status":"ALL_THREE_THEOREMS_PROVED","formula":"ceil(3n/2)+1 if n=2 mod 4, otherwise ceil(3n/2)","matrix_identity_verified":true,"prefix_verified":true},
+  "width6": {"status":"ALL_THREE_THEOREMS_PROVED","formula":"ceil(12n/7)+epsilon[n mod 14], except n=12 gives 22","matrix_identity_verified":true,"prefix_verified":true},
+  "width7": {"status":"ALL_THREE_THEOREMS_PROVED","formula":"2n, except n=7 gives 15 and n=14 gives 30","matrix_identity_verified":true,"prefix_verified":true},
+  "target_status": {"P5_Cn":"PROVED","P6_Cn":"PROVED","P7_Cn":"PROVED"},
+  "evidence": {
+    "direct_semantics": "FORMALLY_ARGUMENTED_AND_REFEREE_PASSED",
+    "minplus_lemma": "FORMALLY_ARGUMENTED_AND_THRESHOLD_REVIEW_PASSED",
+    "automata": "TOOL_CHECKED_LOCAL",
+    "matrix_identities": "TOOL_CHECKED_LOCAL",
+    "finite_prefixes": "COMPUTATIONALLY_TESTED",
+    "literature": "NO_EQUIVALENT_TARGET_WIDTH_CLASSIFICATION_FOUND",
+    "paper_review": "PASS_SCOPE_LIMITED"
+  },
+  "verification": {
+    "full_suite": "125 passed",
+    "certificate_verifiers": "widths 5, 6, and 7 accepted",
+    "producer_replay": "zero identity mismatches; persisted hashes reproduced",
+    "resource_caps": "within recorded limits"
+  },
+  "referees": {"graph_theory":"PASS","tropical":"PASS","theorem_coverage":"PASS","computational":"PASS_CERTIFICATE_GATE"},
+  "literature_status": "NO_EQUIVALENT_TARGET_WIDTH_CLASSIFICATION_FOUND",
+  "blockers": [],
+  "publication_claim": false
+}

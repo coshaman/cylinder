@@ -1,0 +1,52 @@
+{
+  "status": "TOOL_CHECKED_LOCAL",
+  "scope": "Task 8 clean-room certificate verification only",
+  "verifier": "verify/verify_certificates.py",
+  "mutation_suite": "verify/mutation_tests.py",
+  "widths": [
+    {
+      "width": 5,
+      "state_count": 169,
+      "transition_count": 2419,
+      "N": 16,
+      "p": 4,
+      "c": 6,
+      "automaton_manifest_sha256": "09dde439e1695e469b6e0a557acc82bf5fd1c90058eaa6a8e7d211155018c836",
+      "M_N_sha256": "30fe62b30aa6ccbfd148707ac3c942d00ce966f88e62fdc7cc7319f1aa30e20d",
+      "M_N_plus_p_sha256": "e781343209927d81932f2802a4264e096c67763a64e834d2a6d98e697a0ee643",
+      "identity_status": "TOOL_CHECKED_LOCAL",
+      "identity_holds": true,
+      "matrix_contains_inf": false
+    },
+    {
+      "width": 6,
+      "state_count": 441,
+      "transition_count": 11025,
+      "N": 21,
+      "p": 14,
+      "c": 24,
+      "automaton_manifest_sha256": "03e4db7d0d959775ad99a8e2e548e2a6ee06289bbbc43e80f9e90c31e31cdcda",
+      "M_N_sha256": "e18ae2dc3215162247a7403048b5a97d6c22da2e7d0f861bb61f53efa679b5a0",
+      "M_N_plus_p_sha256": "4a65451135a9db35ede9f0d43d4733164d95df09248610ba3bf2230ecf99d9e8",
+      "identity_status": "TOOL_CHECKED_LOCAL",
+      "identity_holds": true,
+      "matrix_contains_inf": false
+    },
+    {
+      "width": 7,
+      "state_count": 1156,
+      "transition_count": 50303,
+      "N": 28,
+      "p": 4,
+      "c": 8,
+      "automaton_manifest_sha256": "3849c1b2b44e18d48489e722fe34d52b2e45729f88a9aa01cfcdf43987e9f38c",
+      "M_N_sha256": "ac391bb0ca13443328bc9cbd82f902a57a2252537f6886433150dcc7683c6ec5",
+      "M_N_plus_p_sha256": "5eded61ad41742e695bcb9a054a6d41ec007c38ae40d3153887fb3095f147a4c",
+      "identity_status": "TOOL_CHECKED_LOCAL",
+      "identity_holds": true,
+      "matrix_contains_inf": false
+    }
+  ],
+  "limitation": "All persisted M_N and M_N_plus_p matrices for widths 5, 6, and 7 contain no INF entries. The parser and identity check implement INF semantics, while the mutation suite exercises the tagged boundary by changing a finite entry to INF.",
+  "theorem_status": "CONJECTURE"
+}
