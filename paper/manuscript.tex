@@ -59,24 +59,64 @@ results of Crevals and Ostergard concern \(P_m\sq P_n\), not cylinders
 domination \cite{NandiParuiAdhikari2011}.
 
 The results below concern widths not covered by the fixed-width cylindrical
-formulas cited above. Hu, Sohn, and Chen also report exact total-domination
-values for earlier bundle cases, including the small-width overlap and
-$P_5\sq C_n$ \cite{HuSohnChen2016}. We therefore make the narrow claim of
-complete classifications for widths five, six, and seven using one certified
-finite-state proof package, without claiming priority over those earlier
-cases. The cyclic boundary condition couples the first and last columns, and
-a selected vertex cannot dominate itself. Our approach handles both issues
-with a finite-state representation; the semantic reduction is proved in the
-paper and the finite identities are supplied as exact computer-assisted
-certificates.
+formulas cited above. Hu, Sohn, and Chen study related bundle and toroidal
+cases, including $C_m$ bundles over $C_n$ and an exact result for
+$C_n\square C_5$; these are important context but are not silently identified
+with the cylinder $P_5\sq C_n$ \cite{HuSohnChen2016}. Eakawinrujee's public
+dissertation records the exact subfamily
+\[
+p\equiv1\pmod2,\quad q\equiv0\pmod4
+\quad\Longrightarrow\quad
+\gt(P_p\sq C_q)=\frac{(p+1)q}{4},
+\]
+which overlaps the present width-five and width-seven formulas on infinitely
+many circumferences \cite{EakawinrujeeThesis2023}. We therefore make the
+narrow claim of complete classifications for widths five, six, and seven
+across all $n\ge3$ in the audited record, extending rather than erasing these
+earlier exact subfamilies. The cyclic boundary condition couples the first and
+last columns, and a selected vertex cannot dominate itself. Our approach
+handles both issues with a finite-state representation; the semantic reduction
+is proved in the paper and the finite identities are supplied as exact
+computer-assisted certificates.
 
 The methodological distinction from recent nearby work is also important.
-Martínez, Castaño-Fernández, and Puertas use tropical matrix products for
-2-domination of cylinders \cite{MartinezCastanoPuertas2024}; that invariant
-requires two selected neighbors, whereas ordinary total domination requires
-one open neighbor for every vertex, including selected vertices. The shared
-min-plus language is methodological context, not an equivalence of
+Garzón, Martínez, Moreno, and Puertas already use min-plus algorithms for
+2-domination of small-cycle cylinders \cite{GarzonMartinezMorenoPuertas2021}.
+Martínez, Castaño-Fernández, and Puertas later use tropical matrix products
+for broader 2-domination cylinder bounds
+\cite{MartinezCastanoPuertas2024}; that invariant requires two selected
+neighbors for vertices outside the set, whereas ordinary total domination
+requires one open neighbor for every vertex, including selected vertices. The
+shared min-plus language is methodological context, not an equivalence of
 parameters.
+
+\subsection{Prior results and scope of the contribution}
+
+The relevant boundary of the literature can be summarized as follows. The
+first two rows concern the same total-domination parameter, while the latter
+two provide context or a nearby invariant.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.25\textwidth}p{0.63\textwidth}}
+\toprule
+source & scope relevant to this paper\\
+\midrule
+Eakawinrujee (2022) & exact cylinder results for smaller fixed path widths; bounds and related results beyond that range\\
+Eakawinrujee dissertation & exact odd path-width subfamily \(q\equiv0\pmod4\), including infinitely many width-five and width-seven cases\\
+Hu--Sohn--Chen (2016) & related bundle/toroidal total and paired domination results, including an exact \(C_n\square C_5\) case\\
+Garzón--Martínez--Moreno--Puertas (2021) & min-plus algorithms for 2-domination of small-cycle cylinders, a different invariant\\
+Martínez--Castaño-Fernández--Puertas (2024) & finite-state/tropical methods for 2-domination of cylinders, a different invariant\\
+\bottomrule
+\end{tabular}
+\normalsize
+\end{center}
+
+The present result is not a claim that any one of these ingredients is new
+in isolation. Its bounded claim is that the exact values for every
+\(n\ge3\) are supplied for each of the three widths \(m=5,6,7\), with the
+earlier exact subfamilies and related parameters explicitly separated from
+the all-circumference statement.
 
 Our main results are the following.
 
@@ -123,8 +163,15 @@ certificate establishes the matrix identities and prefix values. The
 thresholded recurrence lemma then shows exactly how those finite facts imply
 each all-circumference formula.
 
-For orientation, the following small-width values are contextual overlap with
-Hu--Sohn--Chen and are not claimed as new here:
+For orientation, exact small-circumference cylinder cases are already part of
+the prior record discussed by Hu--Sohn--Chen and reproduced in the public
+Eakawinrujee dissertation. For the three target widths, those prior
+\(C_3\)- and \(C_4\)-values are \(5,6,6,8,6,8\), respectively. The same
+values are independently present in our finite prefix, but are not claimed
+as new. The table separates these checked small circumferences from the
+all-circumference classification supplied below; it does not attribute the
+cylinder cases to Hu--Sohn--Chen's separate toroidal \(C_n\square C_5\)
+result:
 \[
 \begin{array}{c|cc}
  m & \gt(P_m\sq C_3) & \gt(P_m\sq C_4)\\ \hline
@@ -212,6 +259,32 @@ distinct because \(3\nmid2\), so the cyclic encoding has exactly the simple
 graph neighborhood semantics.
 \end{proof}
 
+\subsection{A local transition example}
+
+It is useful to see the pending-mask convention in a concrete transition.
+Take \(S=\varnothing\) and \(R=[m]\). This is an admissible state: before
+the current column is read, every row may still require its right horizontal
+neighbor. Choose \(T=[m]\). The edge is legal because \(R\subseteq T\), and
+its head pending set is
+\[
+[m]\setminus\bigl(\varnothing\cup N_P([m])\bigr)=\varnothing.
+\]
+The transition has weight \(m\). In the corresponding two-column fragment,
+the selected vertices in \(T\) are dominated vertically, while the rows that
+were pending in the tail receive their required right neighbor. This example
+also illustrates why the state records obligations created by the preceding
+column rather than treating a selected vertex as self-dominating.
+
+More generally, the state condition is not an additional graph restriction.
+For \(R\subseteq[m]\setminus N_P(S)\), taking
+\[
+U=[m]\setminus\bigl(R\cup N_P(S)\bigr)
+\]
+gives \(R=[m]\setminus(U\cup N_P(S))\). Thus the quantified predecessor
+mask in the definition of \(Q_m\) is exactly the realizability condition for
+the residual obligation mask. The independent state reconstruction uses this
+equivalent characterization.
+
 \section{Min-plus path semantics and the recurrence certificate}
 
 Let \(M_m\) be the weighted adjacency matrix of this graph over \(\Zinf\),
@@ -248,6 +321,13 @@ Theorem~\ref{thm:bijection} and Lemma~\ref{lem:path} give
 \[
 \gt(P_m\sq C_n)=g_m(n),\qquad n\geq3.
 \]
+
+The distinction between an entrywise identity and a scalar sequence pattern
+is important. An identity for the minimum diagonal alone would not control
+arbitrary endpoints and would not justify concatenating an additional walk.
+The certificates instead compare every matrix entry at the two exponents.
+This is the reason the recurrence lemma applies uniformly to all closed walks,
+including those whose minimizing state changes with the circumference.
 
 \begin{lemma}[Thresholded min-plus recurrence]\label{lem:rec}
 Suppose an entrywise identity
@@ -416,6 +496,26 @@ The computations establish the finite proposition; the preceding semantic
 lemmas and theorem arguments establish why that proposition implies the
 infinite statements.
 
+\subsection{What is and is not certified}
+
+The finite proposition has three logically separate inputs. First, the
+definition-level state and transition reconstruction fixes the finite graph.
+Second, the persisted matrices are parsed with explicit finite and
+\(+\infty\) tags, and the verifier recomputes both powers from the reconstructed
+edges rather than trusting a producer's claimed identity. Third, the prefix
+trace initializes every state as a possible source and minimizes the matching
+diagonal entry, so its values are the unrestricted \(g_m(n)\), not a
+low-weight-source surrogate. Hashes bind the persisted binary artifacts to
+the manifests used by the verifier.
+
+This separation also fixes the boundary of the computer-assisted argument.
+The code supplies finite exact premises; it does not replace the
+total-domination bijection, min-plus path lemma, or thresholded algebraic
+implication proved above. Conversely, the written argument does not assert
+that a finite set of tested values alone proves an infinite formula: the
+entrywise identities and their thresholds are the step that supplies the
+tail.
+
 \section{Discussion}
 
 The three widths have different eventual periods: four for widths five and
@@ -423,6 +523,25 @@ seven, and fourteen for width six. This difference is visible in the finite
 state graphs and in the residue correction for width six. The method scales
 naturally as a fixed-width transfer construction, but the finite state space
 grows rapidly with the width. No claim about width eight is made here.
+
+The width-five and width-seven formulas have the same eventual increment
+pattern but arise from different state spaces, while width six has a longer
+period and a nontrivial residue correction. The period-four tails are visible
+in the corresponding entrywise identities, whereas the period fourteen in
+width six is an exact property of the certified matrix power, not an assumed
+periodicity ansatz. The exceptional values are consequently treated as
+finite-prefix data: they are not extrapolated from a recurrence whose base
+threshold excludes them.
+
+The contribution should be read as a fixed-width frontier result and a
+reusable verification pattern. Earlier work settles smaller widths or
+particular residue subfamilies, and nearby 2-domination work demonstrates
+that tropical transfer methods are useful for cylindrical problems. The
+present package adds complete all-circumference total-domination formulas for
+the three frozen widths, together with a clean-room certificate protocol that
+separates graph semantics, finite matrix identities, and tail induction. No
+claim is made that the transfer architecture itself is new in general, or
+that the method resolves arbitrary width.
 
 A cyclic domination problem can be expressed as a closed-walk problem without
 sacrificing the open-neighborhood condition. Once the finite weighted graph is
@@ -474,6 +593,12 @@ graphs, Appl. Math. Comput. 217 (2011) 4879--4889.
 J. A. Martínez, A. B. Castaño-Fernández, M. L. Puertas, The 2-domination
 number of cylindrical graphs, arXiv:2409.16703 (2024).
 \url{https://arxiv.org/abs/2409.16703}.
+
+\bibitem{GarzonMartinezMorenoPuertas2021}
+E. M. Garzón, J. A. Martínez, J. J. Moreno, M. L. Puertas, On the
+2-domination number of cylinders with small cycles, Fundam. Inform. 185
+(2022) 185--199.
+\url{https://arxiv.org/abs/2109.10549}.
 \end{thebibliography}
 
 \end{document}

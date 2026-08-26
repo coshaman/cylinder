@@ -48,5 +48,6 @@
     }
   ],
   "limitation": "All persisted M_N and M_N_plus_p matrices for widths 5, 6, and 7 contain no INF entries. The parser and identity check implement INF semantics, while the mutation suite exercises the tagged boundary by changing a finite entry to INF.",
-  "theorem_status": "CONJECTURE"
+  "theorem_status": "CONJECTURE",
+  "theorem_status_scope": "certificate-verification artifact only; the integrated project theorem status is recorded as ALL_THREE_THEOREMS_PROVED in RESULT.json after the semantic and prefix arguments are combined with these finite premises"
 }

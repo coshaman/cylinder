@@ -21,6 +21,8 @@
   },
   "referees": {"graph_theory":"PASS","tropical":"PASS","theorem_coverage":"PASS","computational":"PASS_CERTIFICATE_GATE"},
   "literature_status": "NO_EQUIVALENT_TARGET_WIDTH_CLASSIFICATION_FOUND",
-  "blockers": [],
+  "blockers": ["REVIEW_CONVERGENCE_FAILED", "GITHUB_PUSH_BLOCKED", "AUTHOR_METADATA_TO_CONFIRM", "LICENSE_CONFIRMATION_REQUIRED", "IMMUTABLE_ARCHIVE_PENDING"],
+  "release_status": "REVIEW_CONVERGENCE_FAILED",
+  "submission_status": "AUTHOR_METADATA_AND_LICENSE_CONFIRMATION_REQUIRED",
   "publication_claim": false
 }

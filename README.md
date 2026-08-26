@@ -4,6 +4,12 @@ Author: **박성현**
 
 Mathematical status: `ALL_THREE_THEOREMS_PROVED`.
 
+Local release status: `REVIEW_CONVERGENCE_FAILED`; remote publication is also
+`GITHUB_PUSH_BLOCKED`. The package has been verified locally, but the
+eight-round reviewer condition was not achieved and the authorized remote
+push was not completed or remotely verified. These statuses are separate from
+the mathematical theorem status.
+
 This project determines the total domination numbers of
 `P_5 □ C_n`, `P_6 □ C_n`, and `P_7 □ C_n` for every `n >= 3`. The proof uses
 an open-neighborhood finite-state bijection, min-plus path semantics, exact
@@ -22,7 +28,9 @@ python verify/verify_certificates.py 7 certificates/width7
 
 The fresh baseline recorded `125 passed`, accepted width-5/6/7 certificate
 replays, 11 mutation tests, and 18 prefix tests. The bounded literature audit
-found no equivalent classification for widths 5–7.
+found no equivalent complete all-circumference classification for all three
+widths. It also records exact prior subfamilies and nearby 2-domination
+methodology; the manuscript states those overlaps explicitly.
 
 The verified identities are:
 

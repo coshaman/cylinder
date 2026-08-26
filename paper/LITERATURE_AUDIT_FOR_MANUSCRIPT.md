@@ -19,15 +19,19 @@ does not provide the target complete classifications for widths 5--7.
 
 Hu, Sohn, and Chen, *Total and paired domination numbers of C_m bundles
 over a cycle C_n*, J. Combin. Optim. 32 (2016), 608--625, DOI
-10.1007/s10878-015-9885-7, covers earlier small-width overlap and reports
-the exact value for C_n square C_5. The small circumference values
-(m,n)=(5,3),(5,4),(6,3),(6,4),(7,3),(7,4) are respectively 5, 6, 6, 8, 6,
-8; these are contextual overlap, not claimed as new.
+10.1007/s10878-015-9885-7, concerns related bundle/toroidal cases and reports
+an exact value for C_n square C_5. The current manuscript does not attribute
+the cylinder P_5 square C_n result to that paper. The small circumference
+values (m,n)=(5,3),(5,4),(6,3),(6,4),(7,3),(7,4) are retained as checked
+finite-prefix values, not as an unsupported citation claim.
 
-Eakawinrujee's 2023 Thammasat dissertation is also recorded as public prior
-art for the cylinder program. It is cited for provenance and context; the
-present manuscript does not claim that its broader dissertation results are
-rederived here.
+Eakawinrujee's 2023 Thammasat dissertation is public prior art for the
+cylinder program. It records the exact odd-path-width subfamily
+p congruent to 1 modulo 2 and q congruent to 0 modulo 4, with
+gamma_t(P_p square C_q)=(p+1)q/4, covering infinitely many width-five and
+width-seven instances. The present manuscript cites this overlap and does not
+claim those residue cases as individually new; its bounded claim concerns the
+complete all-circumference classifications for the three frozen widths.
 
 Hu and Xu, *Total and paired domination numbers of toroidal meshes*, J.
 Comb. Optim. 27 (2014), 76--88, DOI 10.1007/s10878-012-9519-2, concerns
@@ -59,6 +63,12 @@ state/cyclic encodings and tropical matrix products. The mathematical
 distinction is equally explicit: 2-domination requires two selected
 neighbors for vertices outside the set, whereas ordinary total domination
 requires one open neighbor for every vertex, including selected vertices.
+
+The earlier small-cycle paper by Garzón, Martínez, Moreno, and Puertas,
+*On the 2-domination number of cylinders with small cycles*, Fundam.
+Inform. 185 (2022), 185--199, DOI 10.3233/FI-222107, is also included in the
+manuscript bibliography and cited as methodological prior art. It concerns
+2-domination, not the total-domination invariant proved here.
 
 Osborn and Zhang, *From princes on chessboards to proper total domination in
 graphs*, J. Combin. Math. Combin. Comput. 129 (2026), 33--48, DOI

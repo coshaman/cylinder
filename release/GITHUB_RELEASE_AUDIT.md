@@ -3,7 +3,8 @@
 Date: 2026-08-26
 
 The public package was assembled in `release/public`, committed locally on
-branch `main` at commit `56f1d89`, and verified locally. The attempted push to
+branch `main`, and verified locally. The final local commit is available from
+`git log`; the attempted push to
 `https://github.com/coshaman/cylinder.git` failed because the execution
 environment could not connect to GitHub. The escalated push request was also
 rejected by the safety reviewer because it would publish the staged research
@@ -19,4 +20,4 @@ Local package evidence:
   mismatches.
 - Mutation suite: 11 passed.
 - Unrestricted prefix suite: 18 passed.
-- Public `SHA256SUMS`: 68 entries, zero local mismatches after cache cleanup.
+- Public `SHA256SUMS`: 76 entries, zero local mismatches after cache cleanup.
