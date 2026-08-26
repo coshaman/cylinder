@@ -1,0 +1,28 @@
+{
+  "status": "GENERAL_EOD_AND_TOTAL_DOMINATION_THEOREMS_PROVED",
+  "target_domain": "m>=2, n>=3",
+  "eod_theorem": "P_m square C_n has an EOD set iff (m odd and 4 divides n) or (m even and m+1 divides n).",
+  "even_exact_family": "gamma_t(P_(2k) square C_((2k+1)t)) = k(k+1)t for k,t>=1",
+  "odd_sharp_family": "gamma_t(P_(2k+1) square C_(4t)) = 2(k+1)t, prior family",
+  "literature_gate": "PARTIALLY_OVERLAPPING_PRIORITY_AUDIT",
+  "pilot": {"cases": 495, "unknown": 0, "mismatches": 0, "scope": "2<=m<=16, 3<=n<=35"},
+  "construction_regression": "PASS k=1..30",
+  "mathematical_reviews": {"eod": "PASS", "algebra": "PASS", "total_domination": "PASS"},
+  "novelty_review": "PARTIALLY_OVERLAPPING_PRIORITY_AUDIT",
+  "proved_components": ["EOD row-sum necessity", "odd-width iff", "even-width divisibility", "even-width construction", "general total-domination lower bound", "even-width exact family"],
+  "public_theorem_package_modified": true,
+  "manuscript_promotion": "COMPLETED_AFTER_GENERAL_THEOREM_GATE",
+  "venue_panel": {
+    "DAM_correctness": "ACCEPT",
+    "BMMSS_novelty_significance": "MINOR_REVISION",
+    "reproducibility": "MINOR_REVISION",
+    "final_decision": "ACCEPT",
+    "criterion": "no correctness objection survives; at least two independent referees rate ACCEPT or MINOR_REVISION; contribution is not merely fixed-width computation"
+  },
+  "rebuild": {
+    "manuscript_pdf": "REBUILT_AND_RENDERED",
+    "manuscript_consistency": "PASS",
+    "construction_regression": "PASS k=1..30",
+    "certificate_replay": "widths 5, 6, and 7 accepted with zero errors"
+  }
+}

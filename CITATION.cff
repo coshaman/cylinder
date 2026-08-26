@@ -1,9 +1,9 @@
 cff-version: 1.2.0
-message: "If you use this repository, please cite the manuscript and release artifacts."
-title: "Exact Total Domination Numbers of Cylindrical Grids of Widths Five, Six, and Seven"
+message: "If you use this research artifact or manuscript, please cite it."
+title: "Efficient Open Domination and Exact Total Domination in Cylindrical Grids"
 type: software
 authors:
   - name: "박성현"
 date-released: 2026-08-26
 repository-code: "https://github.com/coshaman/cylinder"
-abstract: "Exact total domination formulas for cylindrical grids of widths five, six, and seven, supported by finite-state min-plus certificates."
+abstract: "A structural characterization of efficient open domination in cylindrical grids, a general total-domination lower bound, an exact even-width family, and certificate-backed formulas for widths five, six, and seven."

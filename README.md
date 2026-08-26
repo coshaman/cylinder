@@ -1,36 +1,17 @@
-# Exact total domination of cylindrical grids
+# Exact total domination in cylindrical grids
 
 Author: **박성현**
 
 Mathematical status: `ALL_THREE_THEOREMS_PROVED`.
 
-Local release status: `REVIEW_CONVERGENCE_FAILED`; remote publication is also
-`GITHUB_PUSH_BLOCKED`. The package has been verified locally, but the
-eight-round reviewer condition was not achieved and the authorized remote
-push was not completed or remotely verified. These statuses are separate from
-the mathematical theorem status.
-
-This project determines the total domination numbers of
-`P_5 □ C_n`, `P_6 □ C_n`, and `P_7 □ C_n` for every `n >= 3`. The proof uses
-an open-neighborhood finite-state bijection, min-plus path semantics, exact
-entrywise matrix identities, and complete finite prefixes. Recurrences are
-used only at their proven thresholds; transient exceptions remain in the
-finite prefix.
-
-Reproduce the verification with:
-
-```text
-python -m pytest tests -q
-python verify/verify_certificates.py 5 certificates/width5
-python verify/verify_certificates.py 6 certificates/width6
-python verify/verify_certificates.py 7 certificates/width7
-```
-
-The fresh baseline recorded `125 passed`, accepted width-5/6/7 certificate
-replays, 11 mutation tests, and 18 prefix tests. The bounded literature audit
-found no equivalent complete all-circumference classification for all three
-widths. It also records exact prior subfamilies and nearby 2-domination
-methodology; the manuscript states those overlaps explicitly.
+The primary theorem package characterizes efficient open domination for every
+\(P_m\square C_n\) with \(m\ge2,n\ge3\), proves the general lower bounds,
+and gives the exact even-width family. It also determines
+\(\gamma_t(P_5\square C_n)\),
+\(\gamma_t(P_6\square C_n)\), and \(\gamma_t(P_7\square C_n)\) for every
+\(n\ge3\). It includes the total-domination/automaton bijection, min-plus
+path semantics, exact matrix identities, complete finite prefixes, mutation
+tests, and clean-room certificate verification.
 
 The verified identities are:
 
@@ -40,24 +21,24 @@ M_6^35 = 24 ⊗ M_6^21
 M_7^32 = 8 ⊗ M_7^28
 ```
 
-The associated recurrence thresholds are 16, 21, and 28.
+The recurrence thresholds are respectively 16, 21, and 28; values below a
+threshold are covered only by the finite prefix and are not propagated.
 
-## Manuscript
+Run from this directory:
 
-The manuscript source and preparation materials are under `paper/`. Start
-with `paper/manuscript.tex`, `paper/manuscript.pdf`, and
-`paper/FINAL_MANUSCRIPT_AUDIT.md`. The release baseline is recorded in
-`release/BASELINE_VERIFICATION.md`.
+```text
+python -m pytest tests -q --import-mode=importlib
+python verify/verify_certificates.py 5 certificates/width5
+python verify/verify_certificates.py 6 certificates/width6
+python verify/verify_certificates.py 7 certificates/width7
+python -m pytest tests/test_mutations.py -q
+python -m pytest tests/test_prefix_values.py -q
+```
 
-## Repository structure
-
-- `paper/` — manuscript, bibliography, DAM audit, and review records;
-- `mathematics/` — human-readable proof records;
-- `certificates/` — finite matrix certificates and manifests;
-- `verify/` — clean-room verification scripts;
-- `tests/` — semantic, mutation, and prefix tests;
-- `results/` — theorem and referee records.
-
-Citation metadata is in `CITATION.cff`. The author should complete the
-remaining submission metadata and replace the provisional license notice
-before final public release.
+The generalized contract is frozen in
+`generalization/mathematics/DEFINITIONS_GENERALIZED.md`; the width-5--7
+certificate contract is in `mathematics/DEFINITIONS.md`. The mathematical proof records and fresh review reports are in
+`mathematics/`, `generalization/`, and `results/`. This is a research artifact
+package, not a journal acceptance or submission. Author contact/declaration
+fields and the final licence choice remain explicitly marked for author
+confirmation; no facts have been inferred.

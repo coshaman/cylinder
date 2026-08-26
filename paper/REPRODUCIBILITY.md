@@ -3,7 +3,7 @@
 All commands below are run from the project root:
 
 ```text
-python -m pytest tests -q
+python -m pytest tests -q --import-mode=importlib
 python verify/verify_certificates.py 5 certificates/width5
 python verify/verify_certificates.py 6 certificates/width6
 python verify/verify_certificates.py 7 certificates/width7

@@ -1,7 +1,10 @@
 # Definitions and Frozen Contract
 
 This file freezes the mathematical object for the cylindrical total-domination
-project. The target formulas below are `CONJECTURE` until the certificate,
+project. The target formulas below are integrated as `ALL_THREE_THEOREMS_PROVED`
+after the semantic proof, finite-prefix evidence, and certificate replay; the
+status vocabulary below retains historical intermediate labels for audit
+compatibility.
 clean-room verification, and review gates pass.
 
 ## Graph Family

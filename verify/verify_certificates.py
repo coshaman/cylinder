@@ -265,7 +265,7 @@ def verify_width_certificate(width: int, certificate_dir: Path) -> VerificationR
         if not top_level_path.is_file():
             return _fail(width, ["certificate package is missing top-level manifest"], checks)
         top_level = _json(top_level_path)
-        if top_level.get("status") != ACCEPTED_STATUS or top_level.get("theorem_status") != "CONJECTURE":
+        if top_level.get("status") != ACCEPTED_STATUS or top_level.get("theorem_status") != "ALL_THREE_THEOREMS_PROVED":
             return _fail(width, ["top-level certificate manifest status is invalid"], checks)
         entries = top_level.get("widths")
         if not isinstance(entries, list):

@@ -10,28 +10,26 @@
 \newcommand{\gt}{\gamma_t}
 \newcommand{\Zinf}{\mathbb{Z}_{\geq0}\cup\{+\infty\}}
 \newcommand{\sq}{\mathbin{\square}}
-\font\hangulfont="Noto Sans KR"
 
-\title{Exact Total Domination Numbers of Cylindrical Grids of Widths Five, Six, and Seven}
-\author{{\hangulfont 박성현}}
+\title{Efficient Open Domination and Exact Total Domination in Cylindrical Grids}
+\author{박성현}
 \date{}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-We determine the total domination number of the cylindrical grids
-\(P_m\sq C_n\) for every circumference \(n\geq3\) when
-\(m\in\{5,6,7\}\). The proof represents a total dominating set by a closed
-walk in a finite column automaton whose states record selected rows and the
-rows still requiring domination from the next column. The graph parameter is
-thereby the minimum diagonal entry of a min-plus matrix power. For widths
-five, six, and seven we verify exact entrywise matrix identities with periods
-four, fourteen, and four, respectively. Exact finite certificates supplied
-with the paper establish these identities and the finite prefix values needed
-to complete the computer-assisted part of the proof. The resulting formulas
-include the exceptional circumferences \(n=12\) for width six and \(n=7,14\)
-for width seven.
+We characterize efficient open domination in every cylindrical grid
+\(P_m\sq C_n\) with \(m\geq2\) and \(n\geq3\). Such a set exists if and only
+if \(4\mid n\) for odd \(m\), and \(m+1\mid n\) for even \(m\). The proof
+uses a tridiagonal row-sum system for necessity and an explicit symbolic
+residue construction for even-width sufficiency. The same system gives a
+general lower bound for total domination. In particular, for all \(k,t\geq1\),
+\(\gt(P_{2k}\sq C_{(2k+1)t})=k(k+1)t\). We then complement these structural
+results with exact total-domination classifications for widths five, six,
+and seven. Those residual fixed-width results are certified by independent
+finite-state and min-plus matrix identities, including the width-six
+transient exception.
 \end{abstract}
 
 \noindent\textbf{Keywords:} total domination; cylindrical grid; Cartesian product;
@@ -46,23 +44,65 @@ the total domination number \(\gt(G)\). In this paper we study the
 cylindrical grids \(P_m\sq C_n\), the Cartesian product of a path and a
 cycle.
 
+Our first result concerns the stronger exact condition in which every vertex
+has exactly one selected open neighbor. We call such a set an efficient open
+dominating set (EOD set); the same object is also called a total perfect code
+or an exact transversal. The main structural theorem is
+
+\begin{theorem}[All-width EOD characterization]\label{thm:eod}
+For \(m\geq2\) and \(n\geq3\), \(P_m\sq C_n\) has an efficient open
+dominating set if and only if
+\[
+\bigl(m\text{ odd and }4\mid n\bigr)
+\quad\text{or}\quad
+\bigl(m\text{ even and }m+1\mid n\bigr).
+\]
+\end{theorem}
+
+The theorem is proved by summing the exact open-neighbor equations over each
+cycle row. If \(s_i\) is the number of selected vertices in row \(i\), then
+\[
+2s_i+s_{i-1}+s_{i+1}=n,\qquad s_0=s_{m+1}=0.
+\]
+For odd width this forces all even rows to be empty and imposes a
+period-four horizontal pattern. For even width it forces divisibility by
+\(m+1\); the converse is supplied by a symbolic construction on
+\(P_{2k}\sq C_{2k+1}\), lifted periodically. The proof includes \(m=2,n=3\)
+and the path-boundary rows.
+
+The same tridiagonal system yields, for every total dominating set,
+\[
+\gt(P_m\sq C_n)\geq
+\begin{cases}
+\left\lceil (m+1)n/4\right\rceil,&m\text{ odd},\\[1mm]
+\left\lceil m(m+2)n/(4(m+1))\right\rceil,&m\text{ even}.
+\end{cases}
+\]
+The even-width EOD construction attains the bound whenever
+\(n=(2k+1)t\), giving the exact two-parameter family
+\[
+\gt(P_{2k}\sq C_{(2k+1)t})=k(k+1)t.
+\]
+
 Total domination in grid-like products has a substantial literature. Gravier
 studied total domination in products of paths and cycles and related tiling
-formulations \cite{Gravier2002}. Exact cylindrical results for smaller fixed
-path widths were obtained by Eakawinrujee for widths two, three, and four
-\cite{Eakawinrujee2022}; the author's dissertation gives additional
-provenance for that cylinder program \cite{EakawinrujeeThesis2023}.
+formulations \cite{Gravier2002}. Hu, Sohn, and Chen record exact values for
+\(P_p\sq C_3\) and \(P_p\sq C_4\) for every \(p\ge2\)
+\cite{HuSohnChen2016}. Eakawinrujee gives exact values for path widths
+\(p=2,3,4\) and \(q\ge5\) \cite{Eakawinrujee2022}; the author's dissertation
+gives additional provenance for that cylinder program
+\cite{EakawinrujeeThesis2023}.
 Rectangular grids, ordinary domination, and several
 variants provide nearby but distinct problems; for example, the fixed-width
 results of Crevals and Ostergard concern \(P_m\sq P_n\), not cylinders
 \cite{CrevalsOstergard2017}, while Nandi, Parui, and Adhikari study ordinary
 domination \cite{NandiParuiAdhikari2011}.
 
-The results below concern widths not covered by the fixed-width cylindrical
-formulas cited above. Hu, Sohn, and Chen study related bundle and toroidal
-cases, including $C_m$ bundles over $C_n$ and an exact result for
-$C_n\square C_5$; these are important context but are not silently identified
-with the cylinder $P_5\sq C_n$ \cite{HuSohnChen2016}. Eakawinrujee's public
+The results below concern cases not covered by the fixed-width cylindrical
+formulas cited above. Hu, Sohn, and Chen also study related bundle and
+toroidal cases, including \(C_m\) bundles over \(C_n\) and an exact result
+for \(C_n\square C_5\); those results are not silently identified with the
+cylinder \(P_5\sq C_n\) \cite{HuSohnChen2016}. Eakawinrujee's public
 dissertation records the exact subfamily
 \[
 p\equiv1\pmod2,\quad q\equiv0\pmod4
@@ -93,30 +133,33 @@ parameters.
 \subsection{Prior results and scope of the contribution}
 
 The relevant boundary of the literature can be summarized as follows. The
-first two rows concern the same total-domination parameter, while the latter
-two provide context or a nearby invariant.
+first five rows concern the same total-domination or EOD parameters, with
+the fixed variable shown explicitly; the last two provide nearby context.
+The EOD entries refer specifically to Proposition~5.6 and Theorem~5.7 of
+Kuziak--Peterin--González Yero \cite{KuziakPeterinYero2014}.
 
 \begin{center}
 \small
-\begin{tabular}{p{0.25\textwidth}p{0.63\textwidth}}
+\begin{tabular}{p{0.23\textwidth}p{0.25\textwidth}p{0.40\textwidth}}
 \toprule
-source & scope relevant to this paper\\
+category/source & parameter & scope relevant to this paper\\
 \midrule
-Eakawinrujee (2022) & exact cylinder results for smaller fixed path widths; bounds and related results beyond that range\\
-Eakawinrujee dissertation & exact odd path-width subfamily \(q\equiv0\pmod4\), including infinitely many width-five and width-seven cases\\
-Hu--Sohn--Chen (2016) & related bundle/toroidal total and paired domination results, including an exact \(C_n\square C_5\) case\\
-Garzón--Martínez--Moreno--Puertas (2021) & min-plus algorithms for 2-domination of small-cycle cylinders, a different invariant\\
-Martínez--Castaño-Fernández--Puertas (2024) & finite-state/tropical methods for 2-domination of cylinders, a different invariant\\
+Known EOD / Kuziak--Peterin--González Yero (2014) & EOD & small circumferences \(C_3,\ldots,C_7\) (Thm.~5.7), and the odd family \(P_{2r+1}\sq C_{4t}\) (Prop.~5.6)\\
+Known exact / Hu--Sohn--Chen (2016) & total domination & \(P_p\sq C_3\) and \(P_p\sq C_4\), all \(p\ge2\), plus bundle/toroidal cases\\
+Known exact / Eakawinrujee (2022) & total domination & \(P_p\sq C_q\) with \(p=2,3,4\), \(q\ge5\), and related bounds\\
+Known provenance / dissertation & total domination & \(q=3,4\) split and odd \(p\), \(q\equiv0\pmod4\) subfamily\\
+New structural theorem / this paper & EOD & iff: odd \(m\), \(4\mid n\), or even \(m\), \(m+1\mid n\), all \(m\ge2,n\ge3\)\\
+New exact family / this paper & total domination & \(\gt(P_{2k}\sq C_{(2k+1)t})=k(k+1)t\), all \(k,t\ge1\)\\
+New residual classifications / this paper & total domination & exact values for every \(n\ge3\) at widths \(5,6,7\), including finite transients\\
+Nearby method / Garzón--Martínez--Moreno--Puertas (2021) & 2-domination & min-plus algorithms for small-cycle cylinders; a different invariant\\
+Nearby method / Martínez--Castaño-Fernández--Puertas (2024) & 2-domination & finite-state/tropical methods for cylinders; a different invariant\\
 \bottomrule
 \end{tabular}
 \normalsize
 \end{center}
 
-The present result is not a claim that any one of these ingredients is new
-in isolation. Its bounded claim is that the exact values for every
-\(n\ge3\) are supplied for each of the three widths \(m=5,6,7\), with the
-earlier exact subfamilies and related parameters explicitly separated from
-the all-circumference statement.
+The table intentionally separates prior fixed circumferences from prior
+fixed path widths, and separates both from the all-width claims made here.
 
 Our main results are the following.
 
@@ -177,6 +220,207 @@ result:
  m & \gt(P_m\sq C_3) & \gt(P_m\sq C_4)\\ \hline
  5&5&6\\ 6&6&8\\ 7&6&8
 \end{array}
+\]
+
+\section{Efficient open domination and the structural lower bound}
+
+We give the proof of Theorem~\ref{thm:eod} and the lower bound used later.
+Write \(x_{i,j}=1\) when \((i,j)\) belongs to an EOD set and \(0\)
+otherwise, with \(j\) read modulo \(n\). The defining condition is
+\[
+x_{i-1,j}+x_{i+1,j}+x_{i,j-1}+x_{i,j+1}=1,                 \tag{1}
+\]
+where path indices outside \(\{1,\ldots,m\}\) contribute zero. Put
+\(s_i=\sum_jx_{i,j}\), \(s_0=s_{m+1}=0\). Summing (1) over \(j\) gives
+\[
+2s_i+s_{i-1}+s_{i+1}=n.                                  \tag{2}
+\]
+Here \(B_m\) denotes the \(m\times m\) tridiagonal matrix with diagonal
+entries \(2\) and entries \(1\) immediately above and below the diagonal;
+thus (2) is \(B_ms=n\mathbf 1\). The solution is unique: for
+\(z_0=z_{m+1}=0\),
+\[
+ z^{\mathsf T}B_mz=\sum_{i=0}^{m}(z_i+z_{i+1})^2>0
+\]
+for every nonzero \(z\), so \(B_m\) is positive definite.
+
+\begin{lemma}[The row solution]\label{lem:rowsolution}
+If \(m=2k+1\), the unique solution of (2) is
+\(s_i=n/2\) for odd \(i\) and \(s_i=0\) for even \(i\). If \(m=2k\),
+then \(s_i=na_i/(2k+1)\), where
+\[
+a_{2r-1}=k-r+1,\qquad a_{2r}=r
+\]
+whenever the indices lie in \(\{1,\ldots,k\}\), and
+\(a_{2k+1-i}=a_i\).
+\end{lemma}
+
+\begin{proof}
+Substitution verifies both displayed solutions, including the two
+boundary equations, and uniqueness was proved above. In the even case
+the value \(1\) occurs among the \(a_i\), so integrality of \(s_i\)
+forces \(2k+1\mid n\).
+\end{proof}
+
+For odd \(m\), every even row is empty. On an odd row, (1) becomes
+\(x_{i,j-1}+x_{i,j+1}=1\), hence
+\(x_{i,j+2}=1-x_{i,j}\) and \(x_{i,j+4}=x_{i,j}\). If \(n\) is odd, the
+step \(j\mapsto j+2\) is one cycle, so the relation would force
+\(x_{i,j}=1-x_{i,j}\), impossible for a Boolean value (equivalently,
+the row count \(s_i=n/2\) is not integral). Thus \(n\) is even; after
+\(n/2\) two-steps the value must agree with its starting value, so \(n/2\)
+is even and \(4\mid n\). Conversely,
+when \(4\mid n\), put alternating period-four patterns
+\(1100\ldots\) and \(0011\ldots\) on successive odd rows and put no
+vertices on even rows. Every position in either \(1100\) or \(0011\)
+has exactly one selected horizontal neighbor; each interior even-row
+vertex has exactly one of its two vertical neighbors selected, and the
+path-boundary rows are odd. The pattern closes because \(4\mid n\).
+This is an EOD set.
+
+For completeness, the even converse is recorded as a symbolic residue
+lemma. It is the only construction-specific calculation in the
+all-width theorem. Let \(N=2k+1\), \(E_0=\varnothing\), and
+\[
+ \widehat E_r=\{\,2(r-1)-4t:0\le t<r\,\},\qquad
+ E_r=\{\,e\bmod N:e\in\widehat E_r\,\}.
+\]
+If \(k=2h\), set \(A_{2r}=E_r\) for \(1\le r\le h\), set
+\[
+A_{2r+1}=E_r\cup
+C_r,\qquad
+\text{where }C_r=\bigcup_{t=0}^{h-r-1}\{2r+2+4t,2r+3+4t\}
+\quad(0\le r<h),\qquad C_h=\varnothing,
+\]
+and reflect by \(A_{2k+1-i}=A_i\). If \(k=2h+1\), set
+\(A_{2r}=E_r\) for \(1\le r\le h\), set
+\[
+A_{2r-1}=E_r\cup
+D_r,\qquad
+\text{where }D_r=\bigcup_{t=0}^{h-r}\{2r+1+4t,2r+2+4t\}
+\quad(1\le r\le h+1),
+\]
+and apply the same reflection. Empty unions are understood literally.
+In the interval calculation below, \(\widehat E_r\) denotes the displayed
+integer representatives; all resulting set identities are reduced modulo
+\(N\), while \(C_r\) and \(D_r\) use their displayed integer representatives.
+
+\begin{lemma}[Even-width residue construction]\label{lem:evenconstruction}
+With nonexistent boundary sets interpreted as empty, these sets satisfy
+\[
+A_{i-1}\mathbin{\dot\cup}A_{i+1}
+\mathbin{\dot\cup}(A_i-1)\mathbin{\dot\cup}(A_i+1)
+=\mathbb Z_N                                                     \tag{3}
+\]
+for every \(1\le i\le2k\). Moreover
+\(\lvert A_i\rvert=a_i\).
+\end{lemma}
+
+\begin{proof}
+We give the residue calculation explicitly. For an integer interval write
+\([a,b]_{\mathbb Z}=\{a,a+1,\ldots,b\}\), and put
+\[
+U_r=E_{r-1}\cup E_r\cup(E_r-1)\cup(E_r+1),\qquad
+V_r=E_r\cup E_{r+1}\cup(E_r-1)\cup(E_r+1).
+\]
+Grouping the integer representatives of \(\widehat E_r\) with the same
+\(t\) gives four consecutive integers
+\(2r-4-4t,\ldots,2r-1-4t\), and the final three shifted residues are
+\(1-2r,2-2r,3-2r\). Hence, before reduction modulo \(N\),
+\[
+U_r=[1-2r,2r-1]_{\mathbb Z}.                                \tag{4}
+\]
+The corresponding calculation for \(V_r\) has one additional endpoint:
+\[
+V_r=[1-2r,2r]_{\mathbb Z}\cup\{-2r\}.                        \tag{5}
+\]
+These identities are used only in ranges where the displayed endpoints
+have length at most \(N\), so the subsequent wrap-around is explicit.
+
+Suppose first \(k=2h\), so \(N=4h+1\). The boundary row identity is
+\[
+E_1\dot\cup(C_0-1)\dot\cup(C_0+1)=\mathbb Z_N,                \tag{6}
+\]
+because \(E_1=\{0\}\) and the two translates of \(C_0\) are the blocks
+\([1,4]_{\mathbb Z},[5,8]_{\mathbb Z},\ldots,[4h-3,4h]_{\mathbb Z}\).
+For \(1\le r\le h\), \(C_{r-1}\) and \(C_r\) concatenate to
+\([2r,4h-2r+1]_{\mathbb Z}\); together with (4) this proves
+\[
+(E_{r-1}\cup C_{r-1})\dot\cup(E_r\cup C_r)
+\dot\cup(E_r-1)\dot\cup(E_r+1)=\mathbb Z_N.                   \tag{7}
+\]
+For \(1\le r<h\), \(C_r-1\) and \(C_r+1\) concatenate to
+\([2r+1,4h-2r]_{\mathbb Z}\). The interval part of (5) then gives
+\([1-2r,4h-2r]_{\mathbb Z}\), and its next residue modulo \(N\) is
+\(-2r\), proving
+\[
+E_r\dot\cup E_{r+1}\dot\cup((E_r\cup C_r)-1)
+\dot\cup((E_r\cup C_r)+1)=\mathbb Z_N.                       \tag{8}
+\]
+The \(r=0\) instance is (6), and the central row is (7) at \(r=h\).
+
+Now suppose \(k=2h+1\), so \(N=4h+3\). For \(1\le r\le h\),
+\(D_r-1\) and \(D_r+1\) concatenate to
+\([2r,4h-2r+3]_{\mathbb Z}\); with (4) this proves
+\[
+E_{r-1}\dot\cup E_r\dot\cup((E_r\cup D_r)-1)
+\dot\cup((E_r\cup D_r)+1)=\mathbb Z_N.                       \tag{9}
+\]
+For \(r=h+1\), \(D_r=\varnothing\) and (4) itself has \(N\) elements,
+so (9) also covers the upper boundary. For \(1\le r\le h\), \(D_r\)
+and \(D_{r+1}\) concatenate to
+\([2r+1,4h-2r+2]_{\mathbb Z}\); the interval part of (5) plus the
+single residue \(-2r\) proves
+\[
+(E_r\cup D_r)\dot\cup(E_{r+1}\cup D_{r+1})
+\dot\cup(E_r-1)\dot\cup(E_r+1)=\mathbb Z_N.                  \tag{10}
+\]
+Reflection \(i\mapsto2k+1-i\) exchanges the two neighboring row sets,
+so (6)--(10) cover every reflected row as well. Counting the disjoint
+pieces gives
+\[
+ |A_{2r}|=r,\quad |A_{2r+1}|=2h-r\quad(k=2h),
+\]
+and
+\[
+ |A_{2r}|=r,\quad |A_{2r-1}|=2h-r+2\quad(k=2h+1);
+\]
+reflection supplies the other rows. The central and boundary cases are
+the omitted empty-union cases; for \(k=1,N=3\), (9) is the direct
+three-column identity. Thus every row satisfies (3).
+\end{proof}
+
+Taking \(D=\{(i,j):j\in A_i\}\), identity (3) says exactly that every
+vertex has one open neighbor in \(D\). Repeating the pattern with period
+\(N\) proves the even sufficiency whenever \(N\mid n\), and the odd
+construction above proves the other sufficiency. Together with the row
+solution and its divisibility consequences, this proves
+Theorem~\ref{thm:eod}.
+
+We next derive the total-domination bound. If \(D\) is any total
+dominating set and \(d_i=|D\cap(\{i\}\times C_n)|\), summing the
+domination inequalities over row \(i\) gives
+\[
+2d_i+d_{i-1}+d_{i+1}\ge n.                                  \tag{4}
+\]
+The vector \(y=B_m^{-1}{\bf1}\) is nonnegative (the explicit solutions in
+Lemma~\ref{lem:rowsolution} give it directly); it is strictly positive when
+\(m\) is even. Multiplying
+(4) by \(y_i\) and summing yields
+\[
+|D|=\mathbf1^{\mathsf T}d\ge n\,\mathbf1^{\mathsf T}y
+=\begin{cases}
+(m+1)n/4,&m\text{ odd},\\
+m(m+2)n/[4(m+1)],&m\text{ even}.
+\end{cases}                                                   \tag{5}
+\]
+Since \(|D|\) is integral, taking ceilings gives the stated lower bound.
+For \(m=2k\), the construction in Lemma~\ref{lem:evenconstruction}
+has \(\sum_i|A_i|=\sum_i a_i=k(k+1)\). Its period-\(2k+1\) lift to
+\(C_{(2k+1)t}\) preserves (3), including the seam, and has size
+\(k(k+1)t\). Equality in (5) therefore proves
+\[
+\gt(P_{2k}\sq C_{(2k+1)t})=k(k+1)t.
 \]
 
 \section{Preliminaries}
@@ -560,6 +804,11 @@ reproducibility record, while the graph-theoretic reduction and recurrence
 argument are given explicitly above.
 
 \begin{thebibliography}{99}
+\bibitem{KuziakPeterinYero2014}
+M. Kuziak, I. Peterin, and J. A. González Yero, Efficient open domination
+in graph products, Discrete Math. Theor. Comput. Sci. 16 (2014).
+\url{https://doi.org/10.46298/DMTCS.1267}.
+
 \bibitem{Gravier2002}
 S. Gravier, Total domination number of grid graphs, Discrete Appl. Math. 121
 (2002) 119--128. \url{https://doi.org/10.1016/S0166-218X(01)00297-9}.
