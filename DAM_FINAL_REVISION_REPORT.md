@@ -39,6 +39,12 @@ referee explicitly confirmed the threshold bases 16--19, 21--34, and 28--31,
 and rejected no claim. No artificial unanimous-acceptance criterion is used;
 correctness and prior-art objections are the decisive gates.
 
+Final blind confirmation referee: ACCEPT, recommending publication subject
+only to ordinary editorial and author-metadata completion. Fresh BMMSS venue
+referee: MINOR_REVISION, requesting only explicit formula-level prior-art
+comparisons and removal of internal-only provenance language; no correctness
+or novelty conflict was identified.
+
 ## Reproducibility
 
 - EOD pilot: 495 cases, 0 mismatches

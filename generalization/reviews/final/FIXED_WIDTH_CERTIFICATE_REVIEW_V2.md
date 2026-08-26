@@ -1,5 +1,8 @@
 # Fresh fixed-width/public-package re-audit
 
+> Historical development record retained for provenance. Superseded by the
+> current certificate referee verdict; status language below is not current.
+
 Date: 2026-08-26
 
 ## Scope and evidence rule

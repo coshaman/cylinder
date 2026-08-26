@@ -44,8 +44,8 @@ remain isolated as author-completion items.
 
 The DAM staging is not marked `DAM_SUBMISSION_READY` until the author supplies
 the unresolved metadata and licence choice. The isolated publication snapshot
-is committed locally in the nested `release/public` repository. A
-pre-export audit verified the target repository and `main` branch; the remote
-remained at `b9c41a78ae5ca97b492a2bbea26964dbdf429410`. The execution safety
-review then blocked export, so no remote mutation is claimed and the parent
-workspace was never pushed. See `release/FINAL_REMOTE_AUDIT.md`.
+is committed locally in the nested `release/public` repository at the
+verified descendant commit recorded in `DAM_FINAL_REVISION_REPORT.md`. The
+target is `https://github.com/coshaman/cylinder` on `main`; Codex does not
+perform the final push, and the author-side script must fetch and verify
+remote equality immediately before pushing. See `FINAL_REMOTE_AUDIT.md`.

@@ -1,5 +1,8 @@
 # DAM graph-theory editorial review
 
+> Historical development record retained for provenance. Superseded by the
+> current DAM final revision report; status language below is not current.
+
 ## Review scope and method
 
 This review is limited to the current manuscript and the frozen `release/public_v2`

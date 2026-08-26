@@ -1,5 +1,8 @@
 # Task 10 Paper-Reviewer Gate — Final Notation/Document Review
 
+> Historical development record retained for provenance. Superseded by the
+> current final blind confirmation review; status language below is not current.
+
 Reviewer: paper-reviewer
 Date: 2026-08-25
 Review round: 3
